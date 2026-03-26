@@ -1,0 +1,21 @@
+# Pixi (Entorno virtual - MUY PESADO)
+.pixi/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.env
+.venv/
+env/
+venv/
+
+# Datos (Opcional: solo si quieres que el dataset NO se suba a Git)
+# data/
+
+# Otros
+.DS_Store
