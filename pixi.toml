@@ -5,11 +5,11 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "win-64"]
 
 [tasks]
-# Task to start JupyterLab within the dev environment
+# Launch JupyterLab within the development environment context
 jupyter = "jupyter lab"
 
 [dependencies]
-# Core environment dependencies (Production/Inference)
+# Core dependencies required for model execution and inference (Production)
 python = "3.12.13.*"
 numpy = ">=2.4.2,<3"
 pandas = ">=3.0.1,<4"
@@ -29,10 +29,11 @@ fsspec = ">=2026.2.0,<2027"
 s3fs = ">=2026.2.0,<2027"
 
 [pypi-dependencies]
+# Additional ML tools available via PyPI
 boruta = ">=0.4.3, <0.5"
 
 [feature.dev.dependencies]
-# IDE-like features and development tools (Not for production)
+# IDE-like features, autocompletion (LSP), and linting tools for development only
 jupyterlab = ">=4.5.6,<5"
 jupyter-lsp = "*"
 python-lsp-server = "*"
@@ -40,7 +41,8 @@ ipywidgets = ">=8.1.8,<9"
 ruff = ">=0.15.5,<0.16"
 
 [environments]
-# Default environment: Only contains core ML libraries for deployment
+# Clean environment for production deployments
 default = ["py-deps"]
-# Dev environment: Includes core libraries + IDE tools (LSP, JupyterLab, Linting)
-dev = { features = ["dev"], solve_group = "default" }
+# Enhanced environment for active coding with LSP support
+# Note: Use 'solve-group' with a hyphen, not an underscore
+dev = { features = ["dev"], solve-group = "default" }
