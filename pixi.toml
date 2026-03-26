@@ -9,7 +9,7 @@ platforms = ["linux-64", "win-64"]
 jupyter = "jupyter lab"
 
 [dependencies]
-# Core dependencies required for model execution and inference (Production)
+# Core dependencies for model execution
 python = "3.12.13.*"
 numpy = ">=2.4.2,<3"
 pandas = ">=3.0.1,<4"
@@ -29,11 +29,10 @@ fsspec = ">=2026.2.0,<2027"
 s3fs = ">=2026.2.0,<2027"
 
 [pypi-dependencies]
-# Additional ML tools available via PyPI
 boruta = ">=0.4.3, <0.5"
 
 [feature.dev.dependencies]
-# IDE-like features, autocompletion (LSP), and linting tools for development only
+# Development and IDE tools
 jupyterlab = ">=4.5.6,<5"
 jupyter-lsp = "*"
 python-lsp-server = "*"
@@ -41,8 +40,7 @@ ipywidgets = ">=8.1.8,<9"
 ruff = ">=0.15.5,<0.16"
 
 [environments]
-# Clean environment for production deployments
-default = ["py-deps"]
-# Enhanced environment for active coding with LSP support
-# Note: Use 'solve-group' with a hyphen, not an underscore
+# Default includes all [dependencies] automatically
+default = []
+# Dev includes [dependencies] + [feature.dev.dependencies]
 dev = { features = ["dev"], solve-group = "default" }
